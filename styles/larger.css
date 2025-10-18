@@ -214,3 +214,77 @@
         flex-direction: row;
     }
 }
+
+/* === FIXED FILTER INPUT LAYOUT (stacked From/To & Min/Max) === */
+@media screen and (min-width: 760px) {
+  /* Keep general desktop filter styling */
+  .filter-toggle {
+    display: none;
+  }
+
+  .filter-sidebar {
+    position: static;
+    transform: translateX(0);
+    width: 280px;
+    height: auto;
+    max-width: none;
+    box-shadow: none;
+    border: 1px solid var(--ee-gray-50);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #f9fafb;
+  }
+
+  .filter-close {
+    display: none;
+  }
+
+  /* FIX: stack inputs vertically instead of side-by-side */
+  .filter-inputs {
+    display: flex;
+    flex-direction: column;     /* stack each label on its own line */
+    gap: 1rem;                  /* space between rows */
+    align-items: stretch;       /* make all inputs align nicely */
+    flex-wrap: nowrap;
+  }
+
+  .filter-inputs label {
+    display: flex;
+    flex-direction: column;     /* label text above input */
+    align-items: flex-start;
+    gap: 0.25rem;               /* small gap between label and field */
+    width: 100%;                /* full width inside sidebar */
+  }
+
+  .filter-inputs input {
+    width: 100%;                /* full width for better readability */
+    max-width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  /* Keep the rest of the desktop layout unchanged */
+  main.divider {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .products {
+    min-width: 0;
+  }
+
+  .results-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filter-actions {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}
