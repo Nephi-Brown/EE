@@ -1,4 +1,9 @@
+/* ===========================================================
+   Desktop layout & components
+   =========================================================== */
 @media screen and (min-width: 760px) {
+
+  /* ===== NAV & HEADER ===== */
   .navigation {
     display: flex;
     flex-direction: row;
@@ -8,102 +13,57 @@
     padding: 0;
   }
 
-  .navigation li {
-    display: block;
-    flex: 1 1 100%;
-  }
-
-  .navigation a {
-    text-align: center;
-  }
-
-  .navigation.show {
-    display: flex;
-    flex-direction: row;
-  }
+  .navigation li { display: block; flex: 1 1 100%; }
+  .navigation a { text-align: center; }
+  .navigation.show { display: flex; flex-direction: row; }
 
   .search-bar {
     position: relative;
     max-width: clamp(240px, 82vw, 420px);
-    margin-left: auto; /* push to the right */
+    margin-left: auto;
     margin-right: 16px;
   }
+  .search-bar--embedded .search-btn { min-width: 30%; }
+  .search-bar--embedded .icon { width: 20px; height: 20px; }
+  .search-input { padding: 12px 12px; font-size: 16px; }
+  .search-btn { padding: 0 14px; }
+  #menu { display: none; }
+  .header-nav.open { display: block; }
 
-  .search-bar--embedded .search-btn {
-    min-width: 30%;
-  }
-
-  .search-bar--embedded .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .search-input {
-    padding: 12px 12px;
-    font-size: 16px;
-  }
-
-  .search-btn {
-    padding: 0 14px;
-  }
-
-  #menu {
-    display: none;
-  }
-
-  .header-nav.open {
-    display: block; /* shown when hamburger toggles it */
-  }
-
-  main {
-    gap: 5px;
-    margin-left: 2.5%;
-  }
+  main { gap: 5px; margin-left: 2.5%; }
 
   #category-icons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
 
-  /* Make card images bigger */
-  .card__img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Ensure the card itself doesn't constrain width/height */
-  .icons,
-  .icons .card__link {
-    width: 100%;
-    height: 100%;
-  }
-
-  .icons {
-    cursor: pointer;
-  }
-
-  .icons:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
-  }
+  .card__img { width: 100%; object-fit: cover; display: block; }
+  .icons, .icons .card__link { width: 100%; height: 100%; }
+  .icons { cursor: pointer; }
+  .icons:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.12); }
 
   /* “Success” band layout adjustments */
   main.divider {
-    display: block;
+    /* Turn the page into a two-column layout: sticky filters on the left,
+       products on the right. */
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    padding: 0; /* edge-to-edge band */
+    padding: 0;
   }
 
   main.divider .success-div {
+    grid-column: 1 / -1;
     width: 96%;
     max-width: none;
     margin: 0;
     border-left: 0;
     border-right: 0;
-    border-radius: 0; /* flat edges to span page */
-    padding: 56px 24px; /* taller band feel */
+    border-radius: 0;
+    padding: 56px 24px;
   }
 
   header h1 {
@@ -113,42 +73,100 @@
     margin-left: 0;
   }
 
-  /* ==== Filter line-break fix (works for both small & large screens) ==== */
+  /* ===========================================================
+     FILTER SIDEBAR (Left, sticky, stacked inputs)
+     =========================================================== */
 
-/* 1) Each piece inside a filter fieldset should occupy its own row */
-fieldset legend { display: block; }
+  /* Hide the mobile toggle on desktop */
+  .filter-toggle { display: none; }
 
-/* Make labels take a full line */
-fieldset label {
-  display: block;
-  font-weight: 600;
-  margin: 0.25rem 0 0.35rem;
-}
+  /* Sidebar container */
+  .filter-sidebar {
+    position: sticky;      /* follow while scrolling */
+    top: 16px;             /* adjust if you have a fixed banner/header */
+    align-self: start;     /* start at the top of the grid cell */
+    width: 100%;
+    max-height: calc(100vh - 24px);
+    overflow: auto;        /* scroll just the sidebar if it exceeds viewport */
+    padding: 1.25rem;
+    background: #f9fafb;
+    border: 1px solid var(--ee-gray-50, #e5e7eb);
+    border-radius: 8px;
+    box-shadow: none;
+  }
 
-/* 2) Inputs should break the line and not allow following text to sit inline */
-fieldset input[type="date"],
-fieldset input[type="number"],
-fieldset input[type="text"] {
-  display: block;      /* critical: pushes following text to the next line */
-  width: 100%;         /* nice, consistent width */
-  max-width: 28rem;    /* optional: keep them from getting too wide */
-  box-sizing: border-box;
-  margin-bottom: 0.5rem;
-}
+  .filter-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+    padding-bottom: .75rem; 
+    border-bottom: 2px solid var(--ee-gray-50, #e5e7eb);
+  }
+  .filter-close { display: none; } /* not needed on desktop */
 
-/* 3) If “To”/“Max” are in separate <span>/<strong>/<em>, make them full-line too */
-fieldset > span,
-fieldset > strong,
-fieldset > em {
-  display: block;
-  margin-top: 0.25rem;
-}
+  /* Keep a comfortable vertical flow inside the sidebar */
+  .filter-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .filter-group { display: flex; flex-direction: column; gap: 0.75rem; }
+  .filter-group h3 { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--ee-dark,#525252); }
 
-/* 4) (Optional) Slight vertical spacing between stacked rows */
-fieldset > * + * {
-  margin-top: 0.25rem;
-}
+  /* Stacked inputs: label text above the field */
+  .filter-inputs { display: flex; flex-direction: column; gap: 0.75rem; }
+  .filter-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ee-dark,#525252);
+  }
+  .filter-inputs input {
+    padding: 0.5rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .filter-inputs input:focus {
+    outline: none;
+    border-color: var(--ee-primary,#4169e1);
+    box-shadow: 0 0 0 2px rgba(65,105,225,0.12);
+  }
 
+  /* Actions stay side-by-side but compact */
+  .filter-actions { display: flex; flex-direction: row; gap: 0.6rem; }
 
+  /* Active filters list */
+  .active-filters { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--ee-gray-50,#e5e7eb); }
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  /* If your markup uses fieldsets for Date/Price, keep tidy spacing */
+  fieldset { margin: 0; padding: 0.5rem; }
+  fieldset legend { font-weight: 700; color: var(--ee-dark,#525252); }
+
+  /* Optional: ensure line breaks even if captions are plain text */
+  fieldset input { width: 100%; display: block; }
+
+  /* ===========================================================
+     PRODUCTS COLUMN
+     =========================================================== */
+  .products { min-width: 0; }
+
+  .results-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: var(--ee-gray-50,#f3f4f6);
+    padding: .75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .sort-controls { display: flex; align-items: center; gap: 0.5rem; }
+  .sort-controls select { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: .95rem; }
 }
 
