@@ -113,5 +113,42 @@
     margin-left: 0;
   }
 
+  /* ==== Filter line-break fix (works for both small & large screens) ==== */
+
+/* 1) Each piece inside a filter fieldset should occupy its own row */
+fieldset legend { display: block; }
+
+/* Make labels take a full line */
+fieldset label {
+  display: block;
+  font-weight: 600;
+  margin: 0.25rem 0 0.35rem;
+}
+
+/* 2) Inputs should break the line and not allow following text to sit inline */
+fieldset input[type="date"],
+fieldset input[type="number"],
+fieldset input[type="text"] {
+  display: block;      /* critical: pushes following text to the next line */
+  width: 100%;         /* nice, consistent width */
+  max-width: 28rem;    /* optional: keep them from getting too wide */
+  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+}
+
+/* 3) If “To”/“Max” are in separate <span>/<strong>/<em>, make them full-line too */
+fieldset > span,
+fieldset > strong,
+fieldset > em {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* 4) (Optional) Slight vertical spacing between stacked rows */
+fieldset > * + * {
+  margin-top: 0.25rem;
+}
+
+
 }
 
