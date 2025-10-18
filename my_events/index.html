@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="WDD 330 - Edinburgh Entertainment My Events by Kim Brown, Web Development, JavaScript, CSS, HTML, JSON">
+  <meta name="author" content="Kim Kathleen Brown">
+  <title>Edinburgh Entertainment | My Events</title>
+  <meta property="og:title" content="Edinburgh Entertainment">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mclellaninternational.github.io/wdds30/ee/images">
+  <meta property="og:url" content="https://mclellaninternational.github.io/wdd330/ee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/normalize.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/larger.css">
+  <script src="../js/getDates.js" type="module" defer></script>
+  <script src="../js/hamButton.js" type="module" defer></script>
+  <script src="../js/breadcrumb.js" type="module" defer></script>
+  <script src="../js/my-events.js" type="module" defer></script>
+</head>
+
+<body>
+  <header class="has-corner-cart"></header>
+
+  <div class="nav-section"></div>
+
+  <nav id="breadcrumbs" class="breadcrumb" aria-label="Breadcrumb"></nav>
+
+  <main class="divider">
+    <h2>My Events</h2>
+    <p class="subtitle">Your bookmarked events</p>
+
+    <section class="products">
+      <ul class="product-list" data-category="My Events"></ul>
+    </section>
+
+    <div id="empty-state" class="empty-state hidden">
+      <p>You haven't bookmarked any events yet.</p>
+      <p><a href="../product_listing/index.html?category=music">Browse events</a> to add some favorites!</p>
+    </div>
+
+    <div class="bookmarks-footer hidden" id="bookmarks-footer">
+      <button id="clear-bookmarks-btn" class="btn-secondary">Clear All Bookmarks</button>
+    </div>
+  </main>
+
+  <footer></footer>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="WDD 330 - Edinburgh Entertainment | Checkout" />
+  <title>Edinburgh Entertainment Checkout</title>
+
+  <!-- ✅ correct paths from /checkout/ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/larger.css" />
+  <link rel="stylesheet" href="../styles/form.css" />
+
+  <!-- ✅ correct script paths -->
+  <script src="../js/getDates.js" type="module" defer></script>
+  <script src="../js/hamButton.js" type="module" defer></script>
+  <script src="../js/breadcrumb.js" type="module" defer></script>
+  <script src="../js/main.js" type="module" defer></script>
+  <script src="../js/checkout.js" type="module" defer></script>
+
+  <!-- small layout tweaks you asked for -->
+  <style>
+    .totals-block{margin-top:1rem;padding:12px;border-top:1px solid #eee}
+    .totals-block h3{margin:.25rem 0}
+    #submit-div{margin:.75rem 0 0;display:flex;justify-content:flex-start}
+    #submit-div .submit-button{width:auto;padding:.9rem 1.25rem}
+  </style>
+</head>
+
+<body>
+  <header class="has-corner-cart">
+    <!-- ✅ correct logo + cart image paths -->
+    <img src="../images/logo.png" alt="EE" loading="lazy" width="80" height="80" />
+    <h1>Edinburgh Entertainment Checkout</h1>
+
+    <form class="search-bar" action="#" method="GET" role="search" aria-label="Search events">
+      <input type="search" name="q" class="search-input" placeholder="Search Events" aria-label="Search events" />
+      <button class="search-btn" type="submit" aria-label="Search">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"></circle>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+        </svg>
+      </button>
+    </form>
+
+    <a href="../cart/index.html" class="cart-btn" aria-label="Open cart">
+      <img class="cart-img" src="../images/cart.png" width="35" height="35" alt="" aria-hidden="true" />
+      <span class="cart-count hide" aria-live="polite" aria-atomic="true">0</span>
+    </a>
+  </header>
+
+  <div class="nav-section">
+    <button id="menu" aria-label="Toggle navigation menu"></button>
+    <nav class="header-nav">
+      <ul class="navigation">
+        <li><a href="../index.html" class="active">Home</a></li>
+        <li><a href="../product_listing/index.html">Events</a></li>
+        <li><a href="../cart/index.html">My Cart</a></li>
+        <li><a href="../checkout/index.html">Checkout</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <nav id="breadcrumbs" class="breadcrumb" aria-label="Breadcrumb"></nav>
+  <h2>Review & Place your Bookings</h2>
+
+  <section class="purchase">
+    <form name="checkout">
+      <section class="purchase" id="nameplate">
+        <h3>Order Info</h3>
+
+        <!-- ✅ summary injected by js/checkout.js -->
+        <section id="checkout-cart-summary"></section>
+
+        <h4>Billing & Delivary Address</h4>
+        <label>*First Name:
+          <input type="text" name="fname" placeholder="John" id="first-name" autocomplete="given-name" required />
+        </label><br />
+        <label>*Last Name:
+          <input type="text" name="lname" placeholder="Smith" id="lname" autocomplete="family-name" required />
+        </label><br />
+        <label>*Street Address:
+          <input type="text" name="street" placeholder="123 Oak st" id="street" autocomplete="street-address" required />
+        </label><br />
+        <label>*City:
+          <input type="text" name="city" placeholder="Miami" id="city-add" autocomplete="address-level2" required />
+        </label><br />
+        <label>*State:
+          <select name="state" autocomplete="address-level1" required>
+            <option value="">State</option>
+            <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option>
+            <option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option>
+            <option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option>
+            <option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option>
+            <option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option>
+            <option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+          </select>
+        </label><br />
+        <label>*Zipcode:
+          <input type="number" name="zip" placeholder="12345 or 12345-6789" id="zip-add" autocomplete="postal-code" required />
+        </label><br />
+
+        <h4>Payment</h4>
+        <label>*First Name:
+          <input type="text" name="fname" placeholder="John" id="fname" autocomplete="given-name" required />
+        </label><br />
+        <label>*Last Name:
+          <input type="text" name="lname" placeholder="Smith" id="last-name" autocomplete="family-name" required />
+        </label><br />
+        <label>*Credit Card:
+          <input type="text" autocomplete="cc-number" name="cardNumber" pattern="\d{4} ?\d{4} ?\d{4} ?\d{1,4}" placeholder="1234 5678 9012 3456" id="credit-card" required />
+        </label><br />
+
+        <div id="cc-info">
+          <label>*Expiration:
+            <select name="exp-month" autocomplete="cc-exp-month" required>
+              <option value="">Month</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            </select>
+            <select name="exp-year" autocomplete="cc-exp-year" required>
+              <option value="">Year</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option>
+            </select>
+          </label>
+          <label>*CVC:
+            <input type="text" name="code" autocomplete="cc-csc" pattern="\d{3,4}" maxlength="4" placeholder="123" required />
+          </label>
+        </div>
+
+        <!-- ✅ totals block: Buy Now directly under totals -->
+        <section class="totals-block" id="totals">
+          <h3 class="cart-total" id="sub-tot">Sub-Total: £<span id="sub-value">0.00</span></h3>
+          <h3 class="cart-total" id="tax-tot">Taxes: £<span id="tax-value">0.00</span></h3>
+          <h3 class="cart-final" id="fin-tot">Order Total: £<span id="fin-value">0.00</span></h3>
+          <div id="submit-div">
+            <label id="submit">
+              <input type="submit" name="info-submit" value="Buy Now" class="submit-button" id="invoice-button" />
+            </label>
+          </div>
+        </section>
+      </section>
+    </form>
+  </section>
+
+  <footer>
+    <p>Contact Us: Phone:0123-456-7890</p>
+    <p>Email: info@edinburghentertaiment.com</p>
+    <nav class="footer-nav"></nav>
+    <p>&copy; <span id="currentyear"></span> 🏴 WDD330 🏴 Kim Kathleen Brown 🏴 Edinburgh, Scotland 🏴</p>
+    <p id="lastModified"></p>
+  </footer>
+</body>
+</html>

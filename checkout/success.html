@@ -1,0 +1,85 @@
+<!doctype html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="WDD 330 - Edinburgh Entertainment Order Success by Kim Brown, Web Development, JavaScript, CSS, HTML, JSON">
+  <meta name="author" content="Kim Kathleen Brown">
+  <title>Edinburgh Entertainment | Success</title>
+  <meta property="og:title" content="Edinburgh Entertainment">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mclellaninternational.github.io/wdds30/ee/images">
+  <meta property="og:url" content="https://mclellaninternational.github.io/wdd330/ee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/normalize.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/larger.css">
+  <script src="../js/getDates.js" type="module" defer></script>
+  <script src="../js/hamButton.js" type="module" defer></script>
+  <script src="../js/breadcrumb.js" type="module" defer></script>
+</head>
+
+<body>
+  <header class="has-corner-cart">
+    <img src="../images/logo.png" alt="EE" loading="lazy" width="80" height="80">
+    <h1>Edinburgh Entertainment Successful Order</h1>
+
+    <form class="search-bar" action="#" method="GET" role="search" aria-label="Search events">
+      <input type="search" name="q" class="search-input" placeholder="Search Events" aria-label="Search events" />
+      <button class="search-btn" type="submit" aria-label="Search">
+        <!-- Magnifier icon (SVG) -->
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" />
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </form>
+
+    <a href="cart.html" class="cart-btn" aria-label="Open cart">
+      <img class="cart-img" src="../images/cart.png" width="35" height="35" alt="" aria-hidden="true">
+      <span id="cart-badge" aria-live="polite" aria-atomic="true">0</span>
+    </a>
+  </header>
+  <div class="nav-section">
+    <button id="menu" aria-label="Toggle navigation menu"></button>
+    <nav class="header-nav">
+      <ul class="navigation">
+        <li><a href="../index.html" title="index" class="active">Home</a></li>
+        <li><a href="../product_listing/index.html" title="product-listing">Events</a></li>
+        <li><a href="../cart/index.html" title="cart"> My Cart</a></li>
+        <li><a href="../checkout/index.html" title="checkout">Checkout</a></li>
+      </ul>
+    </nav>
+  </div>
+  <nav id="breadcrumbs" class="breadcrumb" aria-label="Breadcrumb"></nav>
+  <main class="divider">
+    <div class="success-div">
+      <br />
+      <h2>Thank you for your purchase!</h2>
+      <p>Your order was successfully processed.</p>
+      <br />
+    </div>
+  </main>
+  <footer>
+    <p>Contact Us: Phone:0123-456-7890</p>
+    <p>Email: info@edinburghentertaiment.com</p>
+
+    <nav class="footer-nav"></nav>
+
+    <p>&copy; <span id="currentyear"></span> 🏴󠁧󠁢󠁳󠁣󠁴󠁿 WDD330 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Kim Kathleen Brown 🏴󠁧󠁢󠁳󠁣󠁴󠁿
+      Edinburgh,Scotland
+      🏴󠁧󠁢󠁳󠁣󠁴󠁿</p>
+    <p id="lastModified"></p>
+  </footer>
+</body>
+
+</html>
